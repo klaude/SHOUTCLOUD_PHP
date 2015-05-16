@@ -1,5 +1,7 @@
 SHOUTCLOUD_PHP
-=================================
+==============
+
+[![Build Status](https://travis-ci.org/klaude/SHOUTCLOUD_PHP.svg?branch=master)](https://travis-ci.org/klaude/SHOUTCLOUD_PHP)
 
 AUTOMATE CALLS TO [SHOUTCLOUD](http://shoutcloud.io/) FOR YOUR WORDPRESS PLUGINS OR WHATEVER. WHY?
 
