@@ -2,6 +2,7 @@ SHOUTCLOUD_PHP
 ==============
 
 [![Build Status](https://travis-ci.org/klaude/SHOUTCLOUD_PHP.svg?branch=master)](https://travis-ci.org/klaude/SHOUTCLOUD_PHP)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/0e85f052-1e99-4f47-8336-bcc9afdc43ae/mini.png)](https://insight.sensiolabs.com/projects/0e85f052-1e99-4f47-8336-bcc9afdc43ae)
 
 AUTOMATE CALLS TO [SHOUTCLOUD](http://shoutcloud.io/) FOR YOUR WORDPRESS PLUGINS OR WHATEVER. WHY?
 
