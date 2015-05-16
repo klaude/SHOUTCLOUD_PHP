@@ -1,0 +1,33 @@
+{
+    "name": "klaude/SHOUTCLOUD_PHP",
+    "type": "library",
+    "description": "STRTOUPPER IN THE CLOUD",
+    "keywords": ["SHOUTCLOUD"],
+    "homepage": "https://github.com/klaude/SHOUTCLOUD_PHP",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kevin Laude",
+            "email": "nerfyoda@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "5.*@stable"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "@stable"
+    },
+    "autoload": {
+        "psr-4": {
+            "SHOUTCLOUD\\": "src/"
+        },
+        "files": [
+            "src/SHOUTCLOUD.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SHOUTCLOUD\\Tests\\": "tests/"
+        }
+    }
+}
