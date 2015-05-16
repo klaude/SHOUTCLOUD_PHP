@@ -18,12 +18,12 @@ INSTALLATION
 ------------
 USE [COMPOSER](http://getcomposer.org/)!
 
-ADD `"klaude/SHOUTCLOUD_PHP": "dev-master"` TO YOUR PROJECT'S `composer.json` FILE'S REQUIRE SECTION:
+ADD `"klaude/shoutcloud": "dev-master"` TO YOUR PROJECT'S `composer.json` FILE'S REQUIRE SECTION:
 
 ```json
 {
     "require": {
-        "klaude/SHOUTCLOUD_PHP": "dev-master"
+        "klaude/shoutcloud": "dev-master"
     }
 }
 ```
