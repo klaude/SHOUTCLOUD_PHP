@@ -18,11 +18,9 @@ function UPCASE($input = null, Client $client = null)
     if (is_null($client)) {
         $client = new Client(
             [
-                'base_url' => 'http://API.SHOUTCLOUD.IO',
-                'defaults' => [
-                    'headers' => [
-                        'Content-Type' => 'application/json',
-                    ],
+                'base_uri' => 'http://API.SHOUTCLOUD.IO',
+                'headers' => [
+                    'Content-Type' => 'application/json',
                 ],
             ]
         );
@@ -33,13 +31,14 @@ function UPCASE($input = null, Client $client = null)
         return $input;
     }
 
+    $options = ['body' => json_encode(['INPUT' => $input])];
+
     // THIS IS WHY WE HAVE THE INTERNET.
     try {
-        return $client->post(
-            '/V1/SHOUT',
-            ['body' => json_encode(['INPUT' => $input])]
-        )->json()['OUTPUT'];
+        $response = $client->request('post', '/V1/SHOUT', $options)->getBody()->getContents();
     } catch (\Exception $e) {
         throw new Exception($e->getMessage(), $e->getCode(), $e);
     }
+
+    return json_decode($response)->OUTPUT;
 }

@@ -3,8 +3,9 @@
 namespace SHOUTCLOUD\Tests;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Subscriber\Mock;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
 use PHPUnit_Framework_TestCase;
 
 class SHOUTCLOUDTest extends PHPUnit_Framework_TestCase
@@ -14,12 +15,11 @@ class SHOUTCLOUDTest extends PHPUnit_Framework_TestCase
         $input = 'hello world';
         $responseBody = json_encode(['OUTPUT' => strtoupper($input)]);
         $responseSize = strlen($responseBody);
-        $mock = new Mock([
-            "HTTP/1.1 200 OK\r\nContent-Length: {$responseSize}\r\n\r\n{$responseBody}",
+        $mockHandler = new MockHandler([
+            new Response(200, ['Content-Length' => $responseSize], $responseBody),
         ]);
 
-        $client = new Client;
-        $client->getEmitter()->attach($mock);
+        $client = new Client(['handler' => HandlerStack::create($mockHandler)]);
 
         $this->assertEquals(strtoupper($input), \SHOUTCLOUD\UPCASE($input, $client));
     }
@@ -32,14 +32,13 @@ class SHOUTCLOUDTest extends PHPUnit_Framework_TestCase
     public function test_ERRORS_WHILE_SHOUTING()
     {
         // FAKEY BAKEY 404.
-        $mock = new Mock([
+        $mockHandler = new MockHandler([
             new Response(404),
         ]);
 
-        $client = new Client;
-        $client->getEmitter()->attach($mock);
+        $client = new Client(['handler' => HandlerStack::create($mockHandler)]);
 
-        $this->setExpectedException('SHOUTCLOUD\\Exception', 'CLIENT ERROR RESPONSE');
+        $this->setExpectedException('SHOUTCLOUD\\Exception', 'CLIENT ERROR');
         \SHOUTCLOUD\UPCASE('hello', $client);
     }
 }
