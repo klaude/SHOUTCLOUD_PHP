@@ -20,17 +20,7 @@ INSTALLATION
 ------------
 USE [COMPOSER](http://getcomposer.org/)!
 
-ADD `"klaude/shoutcloud": "dev-master"` TO YOUR PROJECT'S `composer.json` FILE'S REQUIRE SECTION:
-
-```json
-{
-    "require": {
-        "klaude/shoutcloud": "dev-master"
-    }
-}
-```
-
-BAM. NOW YOUR CAPS LOCK KEY IS WEB SCALE.
+RUN `composer require klaude/shoutcloud:dev-master`. BAM. NOW YOUR CAPS LOCK KEY IS WEB SCALE.
 
 USAGE
 -----
@@ -39,5 +29,4 @@ CALL `SHOUTCLOUD\UPCASE()` LIKE IT AIN'T NO THING.
 ```php
 // WAY BETTER THAN STRTOUPPER()!
 echo SHOUTCLOUD\UPCASE('hey you guys!');
-
 ```
