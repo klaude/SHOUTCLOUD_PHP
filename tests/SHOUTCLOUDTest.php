@@ -6,9 +6,9 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class SHOUTCLOUDTest extends PHPUnit_Framework_TestCase
+class SHOUTCLOUDTest extends TestCase
 {
     public function test_I_CAN_UPCASE()
     {
@@ -31,14 +31,15 @@ class SHOUTCLOUDTest extends PHPUnit_Framework_TestCase
 
     public function test_ERRORS_WHILE_SHOUTING()
     {
+        $this->expectException('SHOUTCLOUD\\Exception');
+        $this->expectExceptionMessage('CLIENT ERROR');
+
         // FAKEY BAKEY 404.
         $mockHandler = new MockHandler([
             new Response(404),
         ]);
 
         $client = new Client(['handler' => HandlerStack::create($mockHandler)]);
-
-        $this->setExpectedException('SHOUTCLOUD\\Exception', 'CLIENT ERROR');
         \SHOUTCLOUD\UPCASE('hello', $client);
     }
 }
